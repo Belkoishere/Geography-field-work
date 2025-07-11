@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Urban environments</title>
+	<script>
+	var time = 0;
+	var counts = [];
+	var ids = ["hclass", "lclass", "Industry", "Businesses", "smallBusinesses", "communityservices"];
+	var high4 = localStorage.getItem("highhousingfour");
+	var low4 = localStorage.getItem("lowhousingthreefour");
+	var indust4 = localStorage.getItem("industrialfour");
+	var com4 = localStorage.getItem("communityfour");
+	var bus4 = localStorage.getItem("bbusinessfour");
+	var small4 = localStorage.getItem("sbusinessfour");
+	var time4 = localStorage.getItem("4");
+	var timer = setInterval(function(){
+		time ++;
+	}, 1000);
+
+	document.addEventListener("keydown", event => {
+        if(event.key === "h"){
+            add(0, "fourthzone")
+        }
+        if(event.key === "l"){
+        	add(1, "fourthzone")
+        }
+        if (event.key === "i") {
+        	add(2, "fourthzone")
+        }
+        if (event.key === "b") {
+        	add(3, "fourthzone")
+        }
+        if (event.key === "s") {
+        	add(4, "fourthzone")
+        }
+        if (event.key === "c") {
+        	add(5, "fourthzone")
+        }
+	    if(event.key === "p"){
+	    	window.location.href = "view.html";
+	    }
+    });
+
+    function add(initializer, name){
+    	if (name = "fourthzone") {
+			switch(initializer){
+
+				case 0:
+					if(high4 === null){
+						high4 = 1;
+					}
+					else {
+						high4 ++;
+					}
+					localStorage.setItem("highhousingfour", high4);
+					document.getElementById("hclass").style.width = high4 + "px";
+					document.getElementById("0").innerHTML = high4;
+					break;
+				case 1:
+					if(low4 === null){
+						low4 = 1;
+					}
+					else {
+						low4 ++;
+					}
+					localStorage.setItem("lowhousingfour", low4);
+					document.getElementById("lclass").style.width = low4 + "px";
+					document.getElementById("1").innerHTML = low4;
+					break;
+				case 2:
+					if(indust4 === null){
+						indust4 = 1;
+					}
+					else {
+						indust4 ++;
+					}
+					localStorage.setItem("industrialfour", indust4);
+					document.getElementById("Industry").style.width = indust4 + "px";
+					document.getElementById("2").innerHTML = indust4;
+					break;
+				case 3:
+					if(bus4 === null){
+						bus4 = 1;
+					}
+					else {
+						bus4 ++;
+					}
+					localStorage.setItem("bbusinessfour", bus4);
+					document.getElementById("Businesses").style.width = bus4 + "px";
+					document.getElementById("3").innerHTML = bus4;
+					break;
+				case 4:
+					if(small4 === null){
+						small4 = 1;
+					}
+					else {
+						small4 ++;
+					}
+					localStorage.setItem("sbusinessfour", small4);
+					document.getElementById("smallBusinesses").style.width = small4 + "px";
+					document.getElementById("4").innerHTML = small4;
+					break;
+				case 5:
+					if(com4 === null){
+						com4 = 1;
+					}
+					else {
+						com4 ++;
+					}
+					localStorage.setItem("comunityfour", com4);
+					document.getElementById("communityservices").style.width = com4 + "px";
+					document.getElementById("5").innerHTML = com4;
+			}
+		}
+		
+    }
+
+    function start(){
+    	counts.push(high4, low4, indust4, bus4, small4, com4);
+    	for (var a = 0; a < counts.length; a ++) {
+    		document.getElementById(a).innerHTML = counts[a];
+    	}
+    	for (var i = 0; i < counts.length; i++) {
+    		var id = ids[i];
+    		document.getElementById(id).style.width = counts[i] + "px";
+    	}
+    }
+	</script>
+	<style>
+		div{
+			height: 20px;
+			width: 0px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body onload="start()">
+	<h3 id="fourthzonearea"></h3>
+	<div id="hclass"></div><p id="0"></p>
+	<div id="lclass"></div><p id="1"></p>
+	<div id="Industry"></div><p id="2"></p>
+	<div id="Businesses"></div><p id="3"></p>
+	<div id="smallBusinesses"></div><p id="4"></p>
+	<div id="communityservices"></div><p id="5"></p>
+
+</body>
+</html>

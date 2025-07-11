@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Results</title>
+	<script>
+
+	var high = localStorage.getItem("highhousing");
+	var low = localStorage.getItem("lowhousing");
+	var indust = localStorage.getItem("industrial");
+	var com = localStorage.getItem("comunity");
+	var small = localStorage.getItem("sbusiness");
+	var big = localStorage.getItem("bbusiness");
+	var high2 = localStorage.getItem("highhousingtwo");
+	var low2 = localStorage.getItem("lowhousingtwo");
+	var indust2 = localStorage.getItem("industrialtwo");
+	var com2 = localStorage.getItem("comunitytwo");
+	var small2 = localStorage.getItem("sbusinesstwo");
+	var big2 = localStorage.getItem("bbusinesstwo");
+	var high3 = localStorage.getItem("highhousingthree");
+	var low3 = localStorage.getItem("lowhousingthree");
+	var indust3 = localStorage.getItem("industrialthree");
+	var com3 = localStorage.getItem("comunitythree");
+	var small3 = localStorage.getItem("sbusinessthree");
+	var big3 = localStorage.getItem("bbusinessthree");
+	var high4 = localStorage.getItem("highhousingfour");
+	var low4 = localStorage.getItem("lowhousingfour");
+	var indust4 = localStorage.getItem("industrialfour");
+	var com4 = localStorage.getItem("comunityfour");
+	var small4 = localStorage.getItem("sbusinessfour");
+	var big4 = localStorage.getItem("bbusinessfour");
+	var data = [high, low, indust, com, small, big];
+	var data2 = [high2, low2, indust2, com2, small2, big2];
+	var data3 = [high3, low3, indust3, com3, small3, big3];
+	var data4 = [high4, low4, indust4, com4, small4, big4];
+	var names = ["h", "l", "i", "c", "s",  "b"];
+	var total1 = 0;
+	var total2 = 0;
+	var total3 = 0;
+	var total4 = 0;
+
+	for (var i = 0; i < 6; i ++){
+		var num = parseInt(data[i]);
+		var num2 = parseInt(data2[i]);
+		var num3 = parseInt(data3[i]);
+		var num4 = parseInt(data4[i]);
+		total1 += num;
+		total2 += num2;
+		total3 += num3;
+		if(num4 > null){
+			total4 += num4;
+	    }
+	}
+
+
+	function create(){
+		for(var i = 0; i < 6; i ++){
+			var widths = data[i];
+			var name = names[i];
+			var makegreeting = document.createElement("div");
+			var p = document.createElement('p');
+			var textformessage = document.createTextNode(name + " " + widths);
+			makegreeting.setAttribute("class", "dis1");
+			makegreeting.style.width = widths + "px";
+			p.appendChild(textformessage);
+			document.getElementById('firstzone').appendChild(makegreeting);
+			document.getElementById('firstzone').appendChild(p);
+		}
+		for(var c = 0; c < 6; c ++){
+			var widths = data2[c];
+			var name = names[c];
+			var p = document.createElement("p");
+			var makegreeting = document.createElement("div");
+			var textformessage = document.createTextNode(name + " " + widths);
+			makegreeting.setAttribute("class", "dis2");
+			makegreeting.style.width = widths + "px";
+			p.appendChild(textformessage);
+			document.getElementById('secondzone').appendChild(makegreeting);
+			document.getElementById('secondzone').appendChild(p);
+		}	
+		for(var d = 0; d < 6; d ++){
+			var widths = data3[d];
+			var name = names[d];
+			var p = document.createElement("p");
+			var makegreeting = document.createElement("div");
+			var textformessage = document.createTextNode(name + " " + widths);
+			makegreeting.setAttribute("class", "dis3");
+			makegreeting.style.width = widths + "px";
+			p.appendChild(textformessage);
+			document.getElementById('thirdzone').appendChild(makegreeting);
+			document.getElementById('thirdzone').appendChild(p);
+		}	
+		for(var e = 0; e < 6; e ++){
+			var widths = data4[e];
+			var name = names[e];
+			var p = document.createElement("p");
+			var makegreeting = document.createElement("div");
+			var textformessage = document.createTextNode(name + " " + widths);
+			makegreeting.setAttribute("class", "dis4");
+			makegreeting.style.width = widths + "px";
+			p.appendChild(textformessage);
+			document.getElementById('fourthzone').appendChild(makegreeting);
+			document.getElementById("fourthzone").appendChild(p);
+		}
+
+		document.getElementById("t1").innerHTML = "Total: " + total1;
+		document.getElementById("t2").innerHTML = "Total: " + total2;
+		document.getElementById("t3").innerHTML = "Total: " + total3;
+		document.getElementById("t4").innerHTML = "Total: " + total4;
+
+	}
+	</script>
+	<style>
+		.dis1{
+			width: relative;
+			height: 20px;
+			background-color: red;
+			padding: 10px;
+		}
+		.dis2{
+			width: relative;
+			height: 20px;
+			background-color: orange;
+			padding: 10px;
+		}
+		.dis3{
+			width: relative;
+			height: 20px;
+			background-color: green;
+			padding: 10px;
+		}
+		.dis4{
+			width: relative;
+			height: 20px;
+			background-color: navy;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body onload="create()">
+
+	<h3>First Zone</h3>
+	<div id="firstzone">
+		
+	</div>
+	<p id="t1"></p>
+	<h3>Second Zone</h3>
+	<div id="secondzone">
+		
+	</div>
+	<p id="t2"></p>
+	<h3>Third Zone</h3>
+	<div id="thirdzone">
+		
+	</div>
+	<p id="t3"></p>
+	<h3>Fourth Zone</h3>
+	<div id="fourthzone">
+	
+	</div>
+	<p id="t4"></p>
+
+</body>
+</html>

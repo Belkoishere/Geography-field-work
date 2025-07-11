@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Urban environments</title>
+	<script>
+	var time = 0;
+	var counts = [];
+	var ids = ["hclass", "lclass", "Industry", "Businesses", "smallBusinesses", "communityservices"];
+	var high = localStorage.getItem("highhousing");
+	var low = localStorage.getItem("lowhousing");
+	var indust = localStorage.getItem("industrial");
+	var com = localStorage.getItem("community");
+	var bus = localStorage.getItem("bbusiness");
+	var small = localStorage.getItem("sbusiness");
+	var time1 = localStorage.getItem("1");
+	var timer = setInterval(function(){
+		time ++;
+	}, 1000);
+
+	document.addEventListener("keydown", event => {
+        if(event.key === "h"){
+            add(0, "firstzone")
+        }
+        if(event.key === "l"){
+        	add(1, "firstzone")
+        }
+        if (event.key === "i") {
+        	add(2, "firstzone")
+        }
+        if (event.key === "b") {
+        	add(3, "firstzone")
+        }
+        if (event.key === "s") {
+        	add(4, "firstzone")
+        }
+        if (event.key === "c") {
+        	add(5, "firstzone")
+        }
+	    if (event.key === "p") {
+	    	window.location.href = "geographyfieldwork2.html";
+	    }
+    });
+
+    function add(initializer, name){
+    	if (name = "firstzone") {
+			switch(initializer){
+				case 0:
+					if(high === null){
+						high = 1;
+					}
+					else {
+						high ++;
+					}
+					localStorage.setItem("highhousing", high);
+					document.getElementById("hclass").style.width = high + "px";
+					document.getElementById("0").innerHTML = high;
+					break;
+				case 1:
+					if(low === null){
+						low = 1;
+					}
+					else {
+						low ++;
+					}
+					localStorage.setItem("lowhousing", low);
+					document.getElementById("lclass").style.width = low + "px";
+					document.getElementById("1").innerHTML = low;
+					break;
+				case 2:
+					if(indust === null){
+						indust = 1;
+					}
+					else {
+						indust ++;
+					}
+					localStorage.setItem("industrial", indust);
+					document.getElementById("Industry").style.width = indust + "px";
+					document.getElementById("2").innerHTML = indust;
+					break;
+				case 3:
+					if(bus === null){
+						bus = 1;
+					}
+					else {
+						bus ++;
+					}
+					localStorage.setItem("bbusiness", bus);
+					document.getElementById("Businesses").style.width = bus + "px";
+					document.getElementById("3").innerHTML = bus;
+					break;
+				case 4:
+					if(small === null){
+						small = 1;
+					}
+					else {
+						small ++;
+					}
+					localStorage.setItem("sbusiness", small);
+					document.getElementById("smallBusinesses").style.width = small + "px";
+					document.getElementById("4").innerHTML = small;
+					break;
+				case 5:
+					if(com === null){
+						com = 1;
+					}
+					else {
+						com ++;
+					}
+					localStorage.setItem("comunity", com);
+					document.getElementById("communityservices").style.width = com + "px";
+					document.getElementById("5").innerHTML = com;
+			}
+		}
+		
+    }
+
+    function start(){
+    	counts.push(high, low, indust, bus, small, com);
+    	for (var a = 0; a < counts.length; a ++) {
+    		document.getElementById(a).innerHTML = counts[a];
+    	}
+    	for (var i = 0; i < counts.length; i++) {
+    		var id = ids[i];
+    		document.getElementById(id).style.width = counts[i] + "px";
+    	}
+    }
+	</script>
+	<style>
+		div{
+			height: 20px;
+			width: 0px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body onload="start()">
+	<h3 id="firstzonearea"></h3>
+	<div id="hclass"></div><p id="0"></p>
+	<div id="lclass"></div><p id="1"></p>
+	<div id="Industry"></div><p id="2"></p>
+	<div id="Businesses"></div><p id="3"></p>
+	<div id="smallBusinesses"></div><p id="4"></p>
+	<div id="communityservices"></div><p id="5"></p>
+
+</body>
+</html>

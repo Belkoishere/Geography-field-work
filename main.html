@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Settings</title>
+	<script>
+
+	function old(){
+		window.location.href = 'geographyfieldwork.html';
+	}
+	function redirect(){
+		window.location.href = "view.html";
+	}
+	function del(){
+		localStorage.removeItem("highhousing", "lowhousing", "industrial", "community", "sbusiness", "bbusiness", "highhousingtwo", "lowhousingtwo", "industrialtwo", "communitytwo", "sbusinesstwo", "bbusinesstwo", "highhousingthree", "lowhousingthree", "industrialthree", "communitythree", "sbusinessthree", "bbusinessthree",
+			"highhousingfour", "lowhousingfour", "industrialfour", "communityfour", "sbusinessfour", "bbusinessfour");
+	}
+	</script>
+</head>
+<body>
+	<button onclick="redirect()">view</button>
+	<button onclick="old()">start</button>
+	<button onclick="del()">delete data</button>
+
+</body>
+</html>
